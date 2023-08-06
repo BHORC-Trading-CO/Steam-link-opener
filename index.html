@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>steam link opener</title>
+  </head>
+  <body>
+    <script>
+      function get_search_params(search) {
+        const searchParams = new URLSearchParams(search);
+        const params = [...searchParams.entries()].reduce((acc, [key, value]) => {
+          return { ...acc, [key]: isNaN(+value) ? value : +value };
+        }, {});
+        return params;
+      }
+      const { steamUrl } = get_search_params(window.location.search);
+      window.open(steamUrl, "_self");
+    </script>
+  </body>
+</html>
